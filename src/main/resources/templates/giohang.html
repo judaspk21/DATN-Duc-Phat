@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Đức Phát | Thiết bị điện</title>
+
+    <link rel="shortcut icon" href="/asset/img/favicon.png">
+    <link
+      rel="stylesheet"
+      href="/asset/css/bootstrap.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/asset/css/font-awesome.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/asset/css/elegant-icons.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/asset/css/nice-select.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="/asset/css/jquery-ui.min.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/asset/css/owl.carousel.min.css"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/asset/css/slicknav.min.css" type="text/css" />
+    <link rel="stylesheet" href="/asset/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="/asset/css/slideshow.css" />
+    <link rel="stylesheet" href="/asset/css/cart.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.8/popper.min.js"></script>
+  </head>
+
+  <body>
+    <div id="cart-data">
+      <!-- header -->
+      <th:block th:replace="fragments :: header"> </th:block>
+      <!-- end header -->
+
+      <section>
+        <div class="giohang container">
+          <h1 class="title-gh">GIỎ HÀNG</h1>
+          <div class="row">
+            <div class="col-lg-9">
+              <div class="card border-white">
+                <div class="table-responsive">
+                  <table class="table table-borderless table-shopping-cart">
+                    <thead class="text-muted">
+                      <tr class="small text-uppercase">
+                        <th scope="col" width="400">Sản Phẩm</th>
+                        <th scope="col" width="150" style="text-align: center">
+                          Số Lượng
+                        </th>
+                        <th
+                          scope="col"
+                          class="text-center"
+                          width="150"
+                          style="text-align: center"
+                        >
+                          Giá
+                        </th>
+
+                        <th
+                          scope="col"
+                          class="text-center"
+                          width="150"
+                          style="text-align: center"
+                        >
+                          Action
+                        </th>
+                        <th
+                          scope="col"
+                          class="text-center d-none d-md-block"
+                          width="50"
+                        ></th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <th:block th:each="cart : ${cart.chiTietGioHang}">
+                        <tr>
+                          <td>
+                            <figure class="itemside align-items-center">
+                              <div class="aside">
+                                <img
+                                  th:src="${cart.key.hinhanh}"
+                                  style="width: 80%; height: 80%"
+                                />
+                              </div>
+                              <figcaption class="info">
+                                <p href="#" class="title-ten" data-abc="true">
+                                  [[${cart.key.tensanpham}]]
+                                </p>
+                              </figcaption>
+                            </figure>
+                          </td>
+                          <td class="quantity-sl input-group">
+                            <button
+                              type="button"
+                              class="quantity-left-minus btn"
+                              data-type="minus"
+                              data-field=""
+                              th:onclick="'minusCart('+ *{cart.key.productId} +')'"
+                              th:disabled="${cart.value <= 1}"
+                            >
+                              <i class="fa-gh fa fa-minus"></i>
+                            </button>
+                            <input
+                            id="onchangeQuantity"
+                              type="text"
+                              th:name="${cart.key.productId}"
+                              class="form-control"
+                              th:value="${cart.value}"
+                              min="1"
+                              max="10"
+                              style="text-align: center"
+                            />                
+                            <button
+                              type="button"
+                              class="quantity-right-plus btn"
+                              data-type="plus"
+                              data-field=""
+                              th:onclick="'addCart('+ *{cart.key.productId} +')'"
+                            >
+                              <i class="fa-gh fa fa-plus"></i>
+                            </button>
+                          </td>
+                          <td>
+                            <div class="price-wrap">
+                              <var
+                                class="price"
+                                th:text="${#numbers.formatDecimal(cart.key.gia, 0, 'COMMA', 0, 'POINT')}"
+                              ></var>
+                            </div>
+                          </td>
+
+                          <td>
+                            <div class="d-flex justify-content-center">
+                              <button
+                                th:onclick="'removeCart('+ *{cart.key.productId} +')'"
+                                class="btn quantity-left-minus1"
+                              >
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      </th:block>
+                      <hr class="md-4" />
+                    </tbody>
+                  </table>
+                  <hr class="md-4" />
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="card border-white">
+                <div class="title-gia card-body">
+                  <dl class="dlist-align">
+                    <dt>Tạm tính</dt>
+                    <dd
+                      class="text-right ml-3"
+                      th:text="${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}"
+                    >
+                      ₫
+                    </dd>
+                  </dl>
+                  <dl class="dlist-align">
+                    <dt>Thành Tiền</dt>
+                    <dd
+                      class="text-right totals_price ml-3"
+                      th:text="${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}"
+                    ></dd>
+                  </dl>
+                  <hr />
+                  <a
+                    th:href="@{/checkout}"
+                    class="btn btn-tt mt-3"
+                    data-abc="true"
+                  >
+                    THANH TOÁN NGAY
+                  </a>
+                  <a
+                    href="./product.html"
+                    class="btn btn-ttmh mt-3"
+                    data-abc="true"
+                  >
+                    TIẾP TỤC MUA HÀNG
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+     <!-- Footer Section Begin -->
+    <th:block th:replace="fragments :: footer">
+
+    </th:block>
+    <!-- Footer Section End -->
+
+      <!-- Js Plugins -->
+    </div>
+
+    <script src="/asset/js/jquery-3.3.1.min.js"></script>
+    <script src="/asset/js/bootstrap.min.js"></script>
+    <script src="/asset/js/jquery.nice-select.min.js"></script>
+    <script src="/asset/js/jquery-ui.min.js"></script>
+    <script src="/asset/js/jquery.slicknav.js"></script>
+    <script src="/asset/js/mixitup.min.js"></script>
+    <script src="/asset/js/owl.carousel.min.js"></script>
+    <script src="/asset/js/main.js"></script>
+    <script src="/asset/js/slideshow.js"></script>
+    <script src="/asset/js/api/cart.js"></script>
+  </body>
+</html>

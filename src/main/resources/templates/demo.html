@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đức Phát | Thiết bị điện</title>
+<link rel="shortcut icon" href="/asset/img/favicon.png">
+<link rel="stylesheet" href="/asset/css/bootstrap.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/asset/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/asset/css/elegant-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/asset/css/nice-select.css" type="text/css" />
+<link rel="stylesheet" href="/asset/css/jquery-ui.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/asset/css/owl.carousel.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/asset/css/slicknav.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/asset/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/asset/css/chitietsp.css" />
+<link rel="stylesheet" href="/asset/css/slideshow.css" />
+<link rel="stylesheet" href="/asset/css/modalhide.css" />
+<link rel="stylesheet" href="/asset/css/index.css" />
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.8/popper.min.js"></script>
+
+<script src="/asset/js/chitietsp.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<style>
+div.gio-hang {
+	display: none; /* Ẩn Mặc Định */
+	position: fixed;
+	z-index: 1021;
+	padding-top: 100px; /* Vị trí của modal */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto; /* thiết lập scroll khi cần thiết */
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+/* Nội Dung Modal */
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12),
+		0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12), 0 16px
+		16px rgba(0, 0, 0, 0.12);
+	border-radius: 25px;
+}
+/* Nút Đóng Modal */
+.close {
+	position: absolute;
+	right: 8px;
+	top: 0px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.btn-continue {
+	border: none;
+}
+
+.bookrating {
+	border: none;
+}
+
+.nameProdrew {
+	font-size: 23px;
+	font-weight: 500;
+}
+
+.imageRew {
+	width: 100px;
+}
+
+.textarea {
+	border: 1px solid #bdbdbd;
+	border-radius: 4px;
+	margin-right: 12px;
+	margin-bottom: 20px;
+}
+
+.textarea-bottom {
+	border-top: 1px solid #bdbdbd;
+	font-size: 0;
+	padding: 8px 8px;
+}
+
+.read-assess__top {
+	padding: 5px 10px 15px 15px;
+}
+
+.comment-btn__item {
+	width: 30%;
+}
+
+.box-border {
+	width: 76%;
+}
+
+.title-head {
+    color: #333;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0px 0px 15px;
+    line-height: normal;
+}
+</style>
+
+
+</head>
+<body>
+	<!-- header -->
+	<th:block th:replace="fragments :: header">
+
+	</th:block>
+	<!-- end header -->
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<ul id="breadcrumb" class="breadcrumb">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Product Details Section Begin -->
+	<section class="product-details spad">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-4" id="img-detail"></div>
+				<div class="col-lg-5 col-md-5">
+					<div class="product__details__text" id="data-detail"></div>
+					<div class="product__details__text">
+						<ul>
+							<button class="primary-btn" onclick="addSP()">Mua ngay</button>
+							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+						</ul>
+					</div>
+
+				</div>
+
+				<div class=" col-lg-3 col-md-3">
+					<div class="sidebar-block service-block">
+						<div class="sidebar-content">
+							<div class="service-item service-item-two">
+								<div class="item-top">
+									<span class="slg"> <img class="slglogo"
+										src="/asset/img/detail/ship.png" alt="Giao hàng trong 24h">
+									</span> <span class="title"> Giao hàng trong 24h </span>
+								</div>
+								<p class="caption">Giao tới tận chân công trình cho khách
+									hàng</p>
+							</div>
+							<div class="service-item service-item-two">
+								<div class="item-top">
+									<span class="slg"> <img class="slglogo"
+										src="/asset/img/detail/chatluong.png" alt="Bảo đảm chất lượng">
+									</span> <span class="title"> Bảo đảm chất lượng </span>
+								</div>
+								<p class="caption">Tất cả các sản phẩm Đức Phát cung cấp đều
+									đảm bảo chất lượng khi đến tay người tiêu dùng.</p>
+							</div>
+							<div class="service-item service-item-two">
+								<div class="item-top">
+									<span class="slg"> <img class="slglogo"
+										src="/asset/img/detail/chinhhang.png"
+										alt="Sản phẩm chính hãng">
+									</span> <span class="title"> Sản phẩm chính hãng </span>
+								</div>
+								<p class="caption">Chúng tôi cung cấp các sản phẩm chính
+									hãng 100%.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-lg-12" id="data_description">
+			<div class="product__details__tab">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item"><a class="nav-link active"
+						data-toggle="tab" href="#tabs-1" role="tab" aria-selected="true">Mô tả sản phẩm</a>
+					</li>
+					<li class="nav-item"><a id="profile-tab" class="nav-link" data-toggle="tab"
+						href="#tabs-3" role="tab" aria-selected="false">Đánh giá <span id="sumRew"></span></a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tabs-1" role="tabpanel">
+						<div class="product__details__tab__desc" id="description">
+							
+						</div>
+					</div>
+					
+					<div class="tab-pane" id="tabs-3" role="tabpanel">
+						<div class="product__details__tab__desc" id="refreshData">
+							<div class="box-border">
+								<div class="rating " id="danhgia">
+									<p class="rating__title" id="titleRew"></p>
+
+									<div class="rating-star left">
+										<div class="rating-left">
+											<div class="rating-top">
+												<p class="point" id="avgScore"></p>
+												<div class="list-star" id="avgStar">
+													
+												</div>
+												<a class="rating-total" id="countRate"></a>
+
+											</div>
+											<ul class="rating-list" id="percent">
+												
+											</ul>
+										</div>
+
+									</div>
+								</div>
+								<div class="comment comment--all ratingLst">
+									<!-- Button trigger modal -->
+									<button type="button" class="comment-btn__item blue" onclick="openModal()">
+										<i class="iconratingnew-circlestar--big"></i>Viết đánh giá</a>
+									</button>
+									
+									<div class="comment comment--all ratingLst" >
+										<div id="loadRew">
+		
+										</div>
+
+
+										<!-- Modal -->
+										<div class="modal fade bd-example-modal-lg" id="reviewModal" tabindex="-1"
+											role="dialog" aria-labelledby="myLargeModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog modal-lg">
+												<div class="modal-content" style="width: 100%">
+													<div class="read-assess__top">
+														<p class="read-assess__title">Đánh giá</p>
+														<!-- <button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button> -->
+													</div>
+
+													<form class="read-assess-main" id="reviewForm">
+
+														<div class="box-cmt-popup">
+															<div id="getProductId"></div>
+
+															<div class="select-star">
+																<p class="txt01">Bạn cảm thấy sản phẩm này như thế
+																	nào?</p>
+
+
+																<div class="str_Rating_detail">
+																	<!--star rating-->
+																	<div id="" data-rating="5"
+																		data-rateyo-read-only="false"
+																		class="rateYo bookrating"></div>
+																	<!-- to show selected star value-->
+																	<input type="text" class="bookrating">
+                                  									<input type="hidden" class="valueRating" value="5" name="score">
+																</div>
+															</div>
+														</div>
+
+														<div class="read-assess-form">
+															<div class="textarea">
+																<textarea class="ct" name="description" id="description"
+																	placeholder="Mời bạn chia sẻ thêm một số cảm nhận ..."></textarea>
+
+																<div class="textarea-bottom clearfix">
+
+																	<input type="file" name="imgupload" class="upload"
+																		id="${editProp.prop}_file" accept="image/*"> <input
+																		name="hinhanh" placeholder="Hình ảnh" type="hidden"
+																		cssClass="form-control" id="pictureInput" /> <img
+																		id="imgpr" src="" style="width: 25%" /> <input
+																		id="hdFileRatingUpload" type="file" class="hide"
+																		accept="image/x-png, image/gif, image/jpeg" />
+
+																	<ul class="resRtImg hide">
+																	</ul>
+																</div>
+															</div>
+
+															<div class="list-input" style="flex-wrap: wrap;">
+																<input type="text" name="nameRew" class="input-assess"
+																	placeholder="Họ và tên (bắt buộc)" value="">
+																
+																<input type="number" name="phoneNumber" class="input-assess"
+																	placeholder="Số điện thoại (bắt buộc)" value="">
+																
+																<input type="text" name="gmail" class="input-assess"
+																	style="margin-right: 12px"
+																	placeholder="Email (không bắt buộc)" value="">
+																<div class="errorMol" id="messError"></div>															
+															</div>
+															
+
+															<button type="submit" class="submit-assess"
+																id="addreview">Gửi đánh giá ngay</button>
+															<span class="lbMsgRt hide"></span>
+
+														</div>
+													</form>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+	</section>
+	<section class="categories">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title related__product__title">
+							<p style="font-size: 23px; font-weight: 550; color: #000">Các sản phẩm liên quan</p>
+						</div>
+					</div>
+					<div class="categories__slider owl-carousel">
+						<div class="col-lg-3" th:each="products : ${products}">
+							<div class="thumb-wrapper">
+								<a th:href="@{'/detail/' + ${products.seourl}}"
+									th:attr="onclick=|loaddetail('${products.productId}')|"> <span
+									class="sale"
+									th:text="${#numbers.formatDecimal(products.khuyenmai, 0, 'COMMA', 0, 'POINT') +'%'}">
+
+								</span> <img th:src="${products.hinhanh}" alt="" />
+									<p class="product-item-name">[[${products.tensanpham}]]</p>
+
+									<div class="item-price">
+										<div class="price-box price-final_price">
+											<span class="special-price"> <span
+												class="price-container"> <span class="price-wrapper">
+														<span class="price"
+														th:text="${#numbers.formatDecimal(products.gia, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+												</span>
+											</span>
+											</span> <span class="old-price"> <span
+												class="price-container"
+												th:with="discount=${(100 - products.khuyenmai)/100}">
+													<span class="price-wrapper"
+													th:with="specialprice=${products.gia / discount}"> <span
+														class="price"
+														th:text="${#numbers.formatDecimal(specialprice, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+												</span>
+											</span>
+											</span>
+										</div>
+									</div>
+
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	<!-- Modal Cho Website -->
+	<div id="myModal" class="gio-hang">
+		<!-- Nội Dung Modal -->
+		<div class="modal-content">
+			<span class="close">×</span>
+			<div id="table-content"></div>
+		</div>
+	</div>
+	
+	
+	
+	  
+
+	<!-- Modal -->
+
+	<div id="back-top">
+		<a title="Go to Top" href="#"> <i class="fa fa-angle-double-up"></i></a>
+	</div>
+	
+	<!-- Footer Section Begin -->
+    <th:block th:replace="fragments :: footer">
+
+    </th:block>
+    <!-- Footer Section End -->
+	
+	<script src="/asset/js/jquery-3.3.1.min.js"></script>
+	<script src="/asset/js/bootstrap.min.js"></script>
+	<script src="/asset/js/jquery.nice-select.min.js"></script>
+	<script src="/asset/js/jquery-ui.min.js"></script>
+	<script src="/asset/js/jquery.slicknav.js"></script>
+	<script src="/asset/js/mixitup.min.js"></script>
+	<script src="/asset/js/owl.carousel.min.js"></script>
+	<script src="/asset/js/main.js"></script>
+	<script src="/asset/js/api/product.js"></script>
+	<script src="/asset/js/api/cart.js"></script>
+	<script src="/asset/js/chitietsp.js"></script>
+	<script src="/asset/js/review.js"></script>
+	
+	<!-- Validation -->
+	<script
+		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/form-data-json-convert/dist/form-data-json.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js'></script><script  src="./script.js"></script>
+    
+	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+	
+	
+	<script>
+var reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'), {
+    keyboard: false
+  });
+
+function openModal() {
+	reviewModal.show();
+}
+
+	/* /* get rating */
+	$(".rateYo").each(function (e) {
+    var ChngRatevaluesEn = {1:'bad',2:'poor',3:'ok',4:'good',5:'super'};
+    var language = "english";
+    var rating = $(this).attr("data-rating");
+    $(this).rateYo({
+        onSet: function (rating) {
+            
+                $(this).next().val(ChngRatevaluesEn[rating]);
+
+                $(".valueRating").val(rating);
+            
+            console.log(rating);
+            $('#valueRating').val(rating);
+        },
+        rating: rating,
+        starWidth: "20px",
+        numStars: 5,
+        fullStar: true,
+        normalFill: "#A0A0A0",
+        spacing: "5px",
+        precision: 2,
+        // rtl: true,
+        // readOnly: true,
+    });
+});
+ 
+	$('.upload').change(function() {
+		  
+	    uploadFile(this);
+	});
+ 
+ 
+	uploadFile = async (fileInput) => {
+	    let formData = new FormData()
+	    formData.append('file', fileInput.files[0]);
+	    let uploadOption = {
+	        method: 'POST',
+	        body: formData
+	    };
+	    try {
+	        let response = await fetch('/upload', uploadOption);
+	        if (response.ok) {
+	            let uploadResult = await response.json();
+	            if (uploadResult.uploaded) {
+					$('#pictureInput').val(uploadResult.url);
+		            let $img =  $(fileInput).next().next();
+		            if ($img.length > 0) {
+		                $('#imgpr').attr('src',uploadResult.url);
+		            }
+		        } else {
+		            alert(uploadResult.messsage);
+		        }
+	        } else {
+	            let error = await response.json();
+	            alert(error);
+	        }
+	    } catch(error) {
+	        alert(error);
+	    }
+	}
+	
+		$(function() {
+			$('#reviewForm').validate({
+				rules: {
+					nameRew: {
+						required: true,
+						minlength: 1,
+						maxlength: 50,
+					},
+					description: {
+						required: true,
+						minlength: 1,
+						maxlength: 350,
+					},
+					phoneNumber: {
+						required: true,
+						minlength: 10,
+						maxlength: 11,
+					}
+				},
+				messages: {
+					nameRew: "Vui lòng nhập đủ thông tin!",
+					description: "Hãy đánh giá thêm về sản phẩm!",
+					phoneNumber: "Vui lòng nhập đúng số điện thoại!"
+				},
+				errorPlacement: function(error, element) {
+			        if (element.attr('name') == 'nameRew') {
+			            error.insertAfter('#messError');
+			        }else if(element.attr('name') == 'phoneNumber') {
+			            error.insertAfter('#messError');
+			        }else{
+			            error.insertAfter(element);
+			        }
+			 	},
+				submitHandler: function () {
+					var productId = localStorage.getItem("prid");
+				    var $form = $('#reviewForm');
+				    /* get rating */
+				    
+				    var rewData = {
+				    	productId,
+				    	score : $form.find('input[name="score"]').val(),
+				    	image : $form.find('input[name="hinhanh"]').val(),				   
+				    	name: $form.find('input[name="nameRew"]').val(),
+				    	phoneNumber: $form.find('input[name="phoneNumber"]').val(),
+				    	description : $('textarea#description').val()
+				      };
+				    console.log(rewData)
+				      $.ajax({
+				          url: "/api/review",
+				          type: "POST",
+				          data: JSON.stringify(rewData),
+				          contentType: "application/json; charset=utf-8",
+				          dataType: "json",
+				          success: function (data, textStatus, jqXHR) {
+				            $('#reviewForm')[0].reset();
+				            reviewModal.hide();
+							loadrew();
+							$('#myTab li:last-child a').tab('show');
+				          },
+				        }); 
+				},
+			});
+		});
+		
+		var span = document.getElementsByClassName("close")[0];
+		/* Sẽ đóng modal khi nhấn dấu x */
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		
+		
+	</script>
+</body>
+</html>

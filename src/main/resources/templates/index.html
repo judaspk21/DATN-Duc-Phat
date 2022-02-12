@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Đức Phát | Thiết bị điện</title>
+    <style>
+     
+    </style>
+
+    <!-- Google Font -->
+    <link rel="shortcut icon" href="/asset/img/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+
+    <link rel="stylesheet" href="/asset/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/asset/css/slideshow.css">
+    <link rel="stylesheet" href="/asset/css/index.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    
+  </head>
+
+  <body>
+    <!-- header -->
+    <th:block th:replace="fragments :: header">
+
+    </th:block>
+    <!-- end header -->
+    
+    <!-- slider -->
+      <th:block th:replace="fragments :: silder">
+
+      </th:block>
+    <!-- end slider -->
+    <section class="categories">
+      <div class="container">
+        <div class="row">
+          <!-- category -->
+         <th:block th:replace="fragments :: category">
+
+         </th:block>
+         <!-- end category -->
+          <div class="col-lg-9">
+            <div class="section-head">
+              <a href="/trademake/Panasonic">
+                <h2 data-metatip="true">Đèn Led Panasonic</h2>
+              </a>
+            </div>
+            <div class="categories__slider owl-carousel owl-theme" id="product">
+              <div class="col-lg-3 " th:each="products : ${productByPana}">
+                <div class="thumb-wrapper baseBlock">
+                  <a th:href="@{'/detail/' + ${products.seourl}}" th:attr="onclick=|loaddetail('${products.productId}')|">
+                      
+                        <span class="sale" th:text="${#numbers.formatDecimal(products.khuyenmai, 0, 'COMMA', 0, 'POINT') +'%'}"> 
+                          
+                          </span>
+                        <img th:src="${products.hinhanh}" alt="" />
+                          <p class="product-item-name">[[${products.tensanpham}]]</p>
+                      
+                      <div class="item-price">
+                        <div class="price-box price-final_price">                                             
+                          <span class="special-price">
+                            <span class="price-container">
+                              <span class="price-wrapper">
+                                <span class="price" th:text="${#numbers.formatDecimal(products.gia, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>
+                          
+                          <span class="old-price">
+                            <span class="price-container" th:with="discount=${(100 - products.khuyenmai)/100}">
+                              <span class="price-wrapper" th:with="specialprice=${products.gia / discount}">
+                                <span class="price" th:text="${#numbers.formatDecimal(specialprice, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>                                          
+                        </div>								
+                      </div>
+                    
+                  </a>
+                </div>
+                
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Categories Section End -->
+
+    <section style="margin-top: 50px">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-head">
+              <a href="/trademake/Nanoco"
+                ><h2 data-metatip="true">Đèn Led Nanoco</h2></a
+              >
+            </div>
+            <div class="categories__slider owl-carousel">
+              <div class="col-lg-3 " th:each="products : ${productByNano}">
+                <div class="thumb-wrapper baseBlock">
+                  <a th:href="@{'/detail/' + ${products.seourl}}" th:attr="onclick=|loaddetail('${products.productId}')|">
+                      
+                        <span class="sale" th:text="${#numbers.formatDecimal(products.khuyenmai, 0, 'COMMA', 0, 'POINT') +'%'}"> 
+                          
+                          </span>
+                        <img th:src="${products.hinhanh}" alt="" />
+                          <p class="product-item-name">[[${products.tensanpham}]]</p>
+                      
+                      <div class="item-price">
+                        <div class="price-box price-final_price">                                             
+                          <span class="special-price">
+                            <span class="price-container">
+                              <span class="price-wrapper">
+                                <span class="price" th:text="${#numbers.formatDecimal(products.gia, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>
+                          
+                          <span class="old-price">
+                            <span class="price-container" th:with="discount=${(100 - products.khuyenmai)/100}">
+                              <span class="price-wrapper" th:with="specialprice=${products.gia / discount}">
+                                <span class="price" th:text="${#numbers.formatDecimal(specialprice, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>                                          
+                        </div>								
+                      </div>
+                    
+                  </a>
+                </div>
+                
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section style="margin-top: 50px">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-head">
+              <a href="#"
+                ><h2 data-metatip="true">Dây cáp điện</h2></a
+              >
+            </div>
+            <div class="categories__slider owl-carousel">
+              <div class="col-lg-3 " th:each="products : ${productByWire}">
+                <div class="thumb-wrapper baseBlock">
+                  <a th:href="@{'/detail/' + ${products.seourl}}" th:attr="onclick=|loaddetail('${products.productId}')|">
+                      
+                        <span class="sale" th:text="${#numbers.formatDecimal(products.khuyenmai, 0, 'COMMA', 0, 'POINT') +'%'}"> 
+                          
+                          </span>
+                        <img th:src="${products.hinhanh}" alt="" />
+                          <p class="product-item-name">[[${products.tensanpham}]]</p>
+                      
+                      <div class="item-price">
+                        <div class="price-box price-final_price">                                             
+                          <span class="special-price">
+                            <span class="price-container">
+                              <span class="price-wrapper">
+                                <span class="price" th:text="${#numbers.formatDecimal(products.gia, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>
+                          
+                          <span class="old-price">
+                            <span class="price-container" th:with="discount=${(100 - products.khuyenmai)/100}">
+                              <span class="price-wrapper" th:with="specialprice=${products.gia / discount}">
+                                <span class="price" th:text="${#numbers.formatDecimal(specialprice, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>                                          
+                        </div>								
+                      </div>
+                    
+                  </a>
+                </div>
+                
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section style="margin-top: 50px">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-head">
+              <a href="#"
+                ><h2 data-metatip="true">Công tắc-Ổ cắm</h2></a
+              >
+            </div>
+            <div class="categories__slider owl-carousel">
+              <div class="col-lg-3 " th:each="products : ${productBySockets}">
+                <div class="thumb-wrapper baseBlock">
+                  <a th:href="@{'/detail/' + ${products.seourl}}" th:attr="onclick=|loaddetail('${products.productId}')|">
+                      
+                        <span class="sale" th:text="${#numbers.formatDecimal(products.khuyenmai, 0, 'COMMA', 0, 'POINT') +'%'}"> 
+                          
+                          </span>
+                        <img th:src="${products.hinhanh}" alt="" />
+                          <p class="product-item-name">[[${products.tensanpham}]]</p>
+                      
+                      <div class="item-price">
+                        <div class="price-box price-final_price">                                             
+                          <span class="special-price">
+                            <span class="price-container">
+                              <span class="price-wrapper">
+                                <span class="price" th:text="${#numbers.formatDecimal(products.gia, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>
+                          
+                          <span class="old-price">
+                            <span class="price-container" th:with="discount=${(100 - products.khuyenmai)/100}">
+                              <span class="price-wrapper" th:with="specialprice=${products.gia / discount}">
+                                <span class="price" th:text="${#numbers.formatDecimal(specialprice, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>                                          
+                        </div>								
+                      </div>
+                    
+                  </a>
+                </div>
+                
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 50px">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-head">
+              <a href="#"
+                ><h2 data-metatip="true">Điện gia dụng</h2></a
+              >
+            </div>
+            <div class="categories__slider owl-carousel">
+              <div class="col-lg-3 " th:each="products : ${productByElectricHouseware}">
+                <div class="thumb-wrapper baseBlock">
+                  <a th:href="@{'/detail/' + ${products.seourl}}" th:attr="onclick=|loaddetail('${products.productId}')|">
+                      
+                        <span class="sale" th:text="${#numbers.formatDecimal(products.khuyenmai, 0, 'COMMA', 0, 'POINT') +'%'}"> 
+                          
+                          </span>
+                        <img th:src="${products.hinhanh}" alt="" />
+                          <p class="product-item-name">[[${products.tensanpham}]]</p>
+                      
+                      <div class="item-price">
+                        <div class="price-box price-final_price">                                             
+                          <span class="special-price">
+                            <span class="price-container">
+                              <span class="price-wrapper">
+                                <span class="price" th:text="${#numbers.formatDecimal(products.gia, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>
+                          
+                          <span class="old-price">
+                            <span class="price-container" th:with="discount=${(100 - products.khuyenmai)/100}">
+                              <span class="price-wrapper" th:with="specialprice=${products.gia / discount}">
+                                <span class="price" th:text="${#numbers.formatDecimal(specialprice, 0, 'COMMA', 0, 'POINT') +'₫'}"></span>
+                              </span>
+                            </span>
+                          </span>                                          
+                        </div>								
+                      </div>
+                    
+                  </a>
+                </div>
+                
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 50px">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="section-head">
+              <h2 data-metatip="true">Ý kiến khách hàng</h2>
+              
+            </div>
+            
+            <body>
+              <div class="carousel">
+                  <div class="carousel__img-container">
+                      <img src="" alt="" class="carousel__image" id="img">
+                  </div>
+                  <blockquote class="testimonial">
+                      <p class="testimonial__text" id="testimonial"></p>
+                      <p class="testimonial__name" id="name"></p>
+                      <p class="testimonial__job" id="job"></p>
+                  </blockquote>
+                  <button class="carousel__btn carousel__btn--left">
+                      <ion-icon name="chevron-back-outline"><i class="fa fa-chevron-left comment"></i></ion-icon>
+                  </button>
+                  <button class="carousel__btn carousel__btn--right">
+                      <ion-icon name="chevron-forward-outline"><i class="fa fa-chevron-right comment"></i></ion-icon>
+                  </button>
+              </div>
+          </body>
+            
+          </div>
+          <div class="col-md-6">
+            <div class="section-head">
+             
+                <h2 data-metatip="true">Hình ảnh tại cửa hàng</h2>
+            </div>
+            <div class="store__slider owl-carousel col-lg-12">
+              <div class="col-lg-12">
+                <img src="/asset/img/ducphat.jpg" alt="" srcset="">
+              </div>
+              <div class="col-lg-12">
+                <img src="/asset/img/ducphat1.jpg" alt="" srcset="">
+              </div>
+              <div class="col-lg-12">
+                <img src="/asset/img/ducphat2.jpg" alt="" srcset="">
+              </div>
+              <div class="col-lg-12">
+                <img src="/asset/img/ducphat4.jpg" alt="" srcset="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+    
+
+    <div id="back-top">
+      <a title="Go to Top" href="#"> <i class="fa fa-angle-double-up"></i></a>
+    </div>
+
+    <!-- Footer Section Begin -->
+    <th:block th:replace="fragments :: footer">
+
+    </th:block>
+    <!-- Footer Section End -->
+
+  
+
+    <!-- Js Plugins -->
+
+    <script src="/asset/js/api/product.js"></script> 
+    <script src="/asset/js/api/category.js"></script>
+
+    <script src="/asset/js/jquery-3.3.1.min.js"></script>
+    <script src="/asset/js/bootstrap.min.js"></script>
+    <script src="/asset/js/jquery.nice-select.min.js"></script>
+    <script src="/asset/js/jquery-ui.min.js"></script>
+    <script src="/asset/js/jquery.slicknav.js"></script>
+    <script src="/asset/js/mixitup.min.js"></script>
+    <script src="/asset/js/owl.carousel.min.js"></script>
+    <script src="/asset/js/main.js"></script>
+    <script src="/asset/js/slideshow.js"></script>
+
+    <script>
+      // TBC
+const reviews = [
+    {
+        id: 1,
+        name: "Chị Nguyễn Thị Khánh Vy",
+        job: "",
+        img: "/asset/img/comment1.png",
+        text:
+            '"Cửa hàng tư vấn sản phẩm nhiệt tình. Giá cả phải chăng, chất lượng sản phẩm sau khi sử dụng rất tốt."'
+    },
+    {
+        id: 2,
+        name: "Anh Khánh",
+        job: "",
+        img: "/asset/img/comment2.jpg",
+        text:
+            '"Đã mua hàng và được cửa hàng hỗ trợ lắp đặt rất tận tình."'
+    },
+    {
+        id: 3,
+        name: "Anh Tài",
+        job: "",
+        img: "/asset/img/comment3.jpg",
+        text:
+            '"Sản phẩm tốt, giá cả phải chăng."'
+    },
+    {
+        id: 4,
+        name: "@billanderson",
+        job: "UX Designer",
+        img: "/asset/img/comment4.jpg",
+        text:
+            '"Được cửa hàng tư vấn nhiệt tình, hỗ trợ lắp đặt sản phẩm."'
+    }
+];
+
+const img = document.getElementById("img");
+const testimonial = document.getElementById("testimonial");
+const name = document.getElementById("name");
+const job = document.getElementById("job");
+
+const leftBtn = document.querySelector(".carousel__btn--left");
+const rightBtn = document.querySelector(".carousel__btn--right");
+
+let currentItem = 0;
+
+window.addEventListener("DOMContentLoaded", function () {
+    showPerson();
+});
+
+function showPerson() {
+    const item = reviews[currentItem];
+    img.src = item.img;
+    testimonial.textContent = item.text;
+    name.textContent = item.name;
+    job.textContent = item.job;
+}
+
+rightBtn.addEventListener("click", function () {
+    currentItem++;
+    if (currentItem > reviews.length - 1) {
+        currentItem = 0;
+    }
+    showPerson();
+});
+
+leftBtn.addEventListener("click", function () {
+    currentItem--;
+    if (currentItem < 0) {
+        currentItem = reviews.length - 1;
+    }
+    showPerson();
+});
+
+    </script>
+  </body>
+</html>
